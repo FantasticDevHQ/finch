@@ -39,7 +39,7 @@ brew install kellykampen/tap/finch
 **From source (works now):**
 
 ```bash
-git clone https://github.com/kellykampen/finch.git
+git clone https://github.com/FantasticDevHQ/finch.git
 cd finch
 bun install
 bun run build      # produces ./finch, a standalone binary

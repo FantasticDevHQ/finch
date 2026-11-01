@@ -42,3 +42,12 @@ docs/
 
 # git worktree checkouts — local only, not tracked in the repo
 .worktrees/
+
+# Checkout-local lifecycle state
+.finch-worktree/
+
+# Deliberately tracked developer documentation; other docs remain local.
+!docs/
+docs/*
+!docs/pull-request-standard.md
+!docs/worktrees.md

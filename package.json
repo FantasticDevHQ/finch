@@ -19,7 +19,14 @@
     "lint": "biome check .",
     "lint:fix": "biome check . --write",
     "preflight": "git rev-parse HEAD && bun run build && ./finch --version",
-    "rehearse": "./scripts/e2e-rehearsal.sh"
+    "rehearse": "./scripts/e2e-rehearsal.sh",
+    "test:standard": "node --test --test-concurrency=1 scripts/*pr-standard.test.mjs scripts/worktree/*.test.mjs",
+    "check:all": "bun run test:standard && bun run typecheck && bun test && bun run build",
+    "worktree:setup": "node scripts/worktree/setup.mjs",
+    "worktree:start": "node scripts/worktree/start.mjs",
+    "worktree:stop": "node scripts/worktree/stop.mjs",
+    "worktree:teardown": "node scripts/worktree/teardown.mjs",
+    "worktree:cleanup": "node scripts/worktree/cleanup.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.2",
@@ -32,5 +39,6 @@
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@xdevplatform/xdk": "^0.5.0",
     "zod": "^4.4.3"
-  }
+  },
+  "packageManager": "bun@1.4.4"
 }

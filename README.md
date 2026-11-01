@@ -485,3 +485,11 @@ credential-phishing attempt.
 
 If you need to actually rotate or revoke a credential (not just diagnose), see
 `docs/runbooks/credential-rotation.md` for the step-by-step, no-secret process.
+
+## Development
+
+Use Bun 1.4.4. See [agent instructions](AGENTS.md), [worktree lifecycle](docs/worktrees.md), and [PR requirements](docs/pull-request-standard.md). Run focused standards checks with `bun run test:standard`; full checks run on UbiCloud CI.
+
+[A Fantastic.Dev Project](https://fantastic.dev)
+
+[![Fantastic.Dev](https://raw.githubusercontent.com/FantasticDevHQ/fantastic-dev-brand-kit/0ce1aebc3e8418d7e59ce171e117cf9793dd2f3a/assets/brand/logo-mark.svg)](https://fantastic.dev)

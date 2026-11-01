@@ -1,0 +1,7 @@
+# Finch development
+
+Finch is a Bun CLI (`src/index.ts`), with no Convex backend or persistent development server. Preserve Bun 1.4.4 and bun.lock. Use synthetic credentials and checkout-local FINCH_CONFIG_PATH for tests; never copy account credentials. Do not run live mutation/rehearsal commands without authorization.
+
+Read [PR requirements](docs/pull-request-standard.md) and [worktree lifecycle](docs/worktrees.md). `bun run test:standard` runs focused Node-only policy/lifecycle tests. `bun run check:all` performs aggregate verification in CI. On the shared remote, full lint/typecheck/build stays in UbiCloud CI. Focused Node checks use NODE_OPTIONS=--max-old-space-size=512. All Node tests and installs acquire the same shared lock. Run focused tests with `flock -w 3600 /home/cloudagent/.cache/fantastic-heavy.lock env NODE_OPTIONS=--max-old-space-size=512 bun run test:standard`. Serialize installs with `flock -w 3600 /home/cloudagent/.cache/fantastic-heavy.lock bun install --frozen-lockfile`. Use one test/build worker.
+
+All CI compute uses UbiCloud Linux. Write-token metadata validation executes only trusted base code. PRs name the owning FIN issue immediately after the title colon and include Summary/What/Why/Evidence/Agent in order, followed by an acceptance checklist. Record actual agent/session identity and reviewer-accessible evidence in the PR, not developer docs. Never merge automatically.

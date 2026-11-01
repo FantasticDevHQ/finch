@@ -305,3 +305,7 @@ test("requires a UI declaration and uploaded screenshot or video for UI changes"
     [],
   );
 });
+test('requires a visible acceptance checklist after Agent',()=>{
+ assert.ok(validatePullRequest({title,body:body.replace('## Acceptance checklist','## Notes')}).some(error=>/checklist/.test(error)));
+ assert.ok(validatePullRequest({title,body:'## Acceptance checklist\n- [ ] First\n'+body.replace('## Acceptance checklist','## Notes')}).some(error=>/checklist/.test(error)));
+});

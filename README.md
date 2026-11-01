@@ -33,7 +33,7 @@ to type is also safe for an agent to shell out to and parse.
 **Homebrew:**
 
 ```bash
-brew install kellykampen/tap/finch
+brew install fantasticdevhq/tap/finch
 ```
 
 **From source (works now):**
@@ -55,7 +55,7 @@ dependency of its own.
 Paste this into any agent harness to get it using Finch with zero other context:
 
 ```
-Install finch: `brew install kellykampen/tap/finch`. Confirm the human running
+Install finch: `brew install fantasticdevhq/tap/finch`. Confirm the human running
 you has already run `finch auth` to configure their X credentials into
 ~/.finch/config — you can't do this step yourself; if it's not configured, tell the
 human to run `finch auth` and stop. Once configured, either call `finch` commands
@@ -438,7 +438,7 @@ which finch        # confirm you're not shadowing a Homebrew install with a
   pulling new commits (`git pull`) does **not** update the compiled binary sitting in
   your working directory. Re-run `bun run build` after every pull before trusting
   `./finch`'s behavior against `main`.
-- **Installed via Homebrew:** `brew upgrade kellykampen/tap/finch` fetches the latest
+- **Installed via Homebrew:** `brew upgrade fantasticdevhq/tap/finch` fetches the latest
   tagged release. If `finch --version` reports an older version than the latest GitHub
   release/tag, upgrade rather than rebuilding a repo-local binary — the two installs
   are independent, and fixing one doesn't fix the other.

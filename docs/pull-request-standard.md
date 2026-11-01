@@ -139,3 +139,17 @@ Verify the actual job's labels, runner name/ID and terminal result through the
 Actions jobs API before describing it as a successful UbiCloud run. Metadata
 validation keeps its existing permissions, five-minute bound and trusted-code
 checkout; it never runs a PR's untrusted head with write permissions.
+
+## Required status names
+
+Finch emits `PR standard` from the trusted-base metadata enforcer and
+`Repository quality gates` from CI. The latter always evaluates the result of
+`verify` and fails for failure, cancellation or skipped verification. The existing
+`verify` check remains available so existing protection retains its full coverage.
+Finch has no Convex backend; no backend isolation status is emitted.
+
+After bootstrap reaches the integration branch and the statuses actually emit,
+read branch protection back through GitHub's API, including required contexts and
+GitHub App identities. Configure the canonical names without removing additional
+checks or review policies. Never require an unavailable metadata context before
+bootstrap or substitute PR-head execution with a write token.

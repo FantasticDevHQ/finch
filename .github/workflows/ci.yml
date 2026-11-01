@@ -49,3 +49,20 @@ jobs:
 
       - name: Regression checklist
         run: ./scripts/regression-checklist.sh
+
+  quality:
+    name: Repository quality gates
+    needs: verify
+    if: ${{ always() }}
+    runs-on: ubicloud-standard-2-ubuntu-2404
+    timeout-minutes: 5
+    steps:
+      - name: Require all repository checks to succeed
+        env:
+          VERIFY_RESULT: ${{ needs.verify.result }}
+        run: |
+          if [ "$VERIFY_RESULT" != success ]; then
+            echo "Repository verification did not succeed: $VERIFY_RESULT"
+            exit 1
+          fi
+          echo 'Repository standards, metadata, typecheck, tests, build and regression checks passed.'

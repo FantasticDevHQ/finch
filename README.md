@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="#install">Install</a> · <a href="#quick-start-for-agents">Agent quick start</a> · <a href="#usage">Usage</a>
+  <a href="#install">Install</a> · <a href="#quick-start-for-agents">Agent quick start</a> · <a href="#usage">Usage</a> · <a href="#contributing">Contributing</a>
 </p>
 
 ---
@@ -514,6 +514,29 @@ credential-phishing attempt.
 If you need to actually rotate or revoke a credential (not just diagnose), see
 `docs/runbooks/credential-rotation.md` for the step-by-step, no-secret process.
 
-## Development
+<a id="development"></a>
 
-Use Bun 1.4.4. See [agent instructions](AGENTS.md), [worktree lifecycle](docs/worktrees.md), and [PR requirements](docs/pull-request-standard.md). Run focused standards checks with `bun run test:standard`; full checks run on UbiCloud CI.
+## Contributing
+
+Contributions are welcome. Read the
+[contributing guide](https://github.com/FantasticDevHQ/.github/blob/main/CONTRIBUTING.md)
+and [Code of Conduct](https://github.com/FantasticDevHQ/.github/blob/main/CODE_OF_CONDUCT.md),
+and report vulnerabilities privately as described in the
+[security policy](https://github.com/FantasticDevHQ/.github/blob/main/SECURITY.md).
+
+Source development needs [Bun](https://bun.sh) 1.4.4 (pinned in `package.json`)
+and Node.js, which runs the repository standard tests with `node --test`.
+
+```sh
+bun install --frozen-lockfile
+bun run check:all   # standard tests, typecheck, bun test and compiled build
+```
+
+Use synthetic credentials and a checkout-local `FINCH_CONFIG_PATH` in tests.
+See the [agent instructions](AGENTS.md) and
+[worktree lifecycle](docs/worktrees.md) for the full workflow. Pull requests
+follow the [PR standard](docs/pull-request-standard.md).
+
+## License
+
+[MIT](LICENSE)

@@ -222,24 +222,24 @@ const commit = (message, extra = {}) => ({ sha: "0123456789abcdef", message, ...
 test("commits inherit a valid Summary reference without mandatory footers", () => {
   const commits = [
     commit("ci: add validator"),
-    commit("ci: add validator (JIF-65)"),
-    commit("ci: add validator\n\nRefs JIF-65"),
+    commit("ci: add validator (FIN-65)"),
+    commit("ci: add validator\n\nRefs FIN-65"),
     commit("Merge branch 'main'", { merge: true }),
   ];
   assert.deepEqual(validatePullRequest({ title, body }, [], commits), []);
   assert.deepEqual(
-    validatePullRequest({ title: "ci: add validator", body: body.replace("Refs JIF-65", "Refs #42") }, [], [commits[0]]),
+    validatePullRequest({ title: "ci: add validator", body: body.replace("Refs FIN-65", "Refs #42") }, [], [commits[0]]),
     [],
   );
-  const errors = validatePullRequest({ title, body: body.replace("Refs JIF-65", "Refs JIF-0") }, [], commits);
+  const errors = validatePullRequest({ title, body: body.replace("Refs FIN-65", "Refs FIN-0") }, [], commits);
   assert.equal(errors.length, 1);
-  assert.match(errors[0], /Summary.*missing JIF-65/);
+  assert.match(errors[0], /Summary.*missing FIN-65/);
 });
 
 test("Summary must declare a different ticket explicitly named in a commit subject", () => {
-  const errors = validatePullRequest({ title, body }, [], [commit("test: cover related flow (JIF-70)")]);
+  const errors = validatePullRequest({ title, body }, [], [commit("test: cover related flow (FIN-70)")]);
   assert.equal(errors.length, 1);
-  assert.match(errors[0], /Summary.*missing JIF-70/);
+  assert.match(errors[0], /Summary.*missing FIN-70/);
 });
 
 test("Summary must declare every ticket referenced by commits", () => {
